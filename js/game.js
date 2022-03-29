@@ -1,117 +1,28 @@
 //get values
+ requirejs(["./helpers/rps"])
 
 const paper= document.getElementById('paper')
 //console.log(paper.id)
 const rock= document.getElementById('rock')
 const scissor= document.getElementById('scissor')
 const leftOp = document.querySelector('.leftOp')
-const OGSTATE = document.body
-const clone = OGSTATE.cloneNode(true)
-let click;
+computerScore=0
+playerScore=0
 const EMOJIS ={
   paper :  "0x270B",
   rock:"0x1FAA8",
   scissor:"0x2702",
 }
-//
-
-
-
-//add eventlisterners
-
-
-
-//use a map to identify the winning scenarios for the pool;
-
-
-const options = {
-  rock: "scissor",
-  scissor: "paper",
-  paper: "rock",
-};
-
-const pool = ["rock", "paper", "scissor"];
-function computerPlay() {
-  let chooser = Math.floor(Math.random() * 3);
-  console.log("chooser " + chooser);
-  return pool[chooser];
-}
-
-function letsPlay(player, computerSelection) {
-  let playerSelection = "" + player;
-  playerSelection.toLowerCase();
-  switch (playerSelection) {
-    case "rock":
-      if (
-        computerSelection === options.rock &&
-        playerSelection !== computerSelection
-      ) {
-        console.log("player1 wins" + computerSelection + " " + playerSelection);
-        return 1;
-      } else {
-        console.log(
-          "player1 loses" + computerSelection + " " + playerSelection
-        );
-
-        return 2;
-      }
-
-    case "paper":
-      if (
-        computerSelection === options.paper &&
-        playerSelection !== computerSelection
-      ) {
-        console.log("player1 " + computerSelection + " " + playerSelection);
-        return 1;
-      } else {
-        return 2;
-      }
-    case "scissor":
-      if (
-        computerSelection === options.scissor &&
-        playerSelection !== computerSelection
-      ) {
-        console.log("player1 " + computerSelection + " " + playerSelection);
-        return 1;
-      } else {
-        return 2;
-      }
-
-    default:
-      return 0;
-  }
-}
-
-function game() {
-  let computer = 0,
-    person = 0;
-  for (let i = 0; i < 5; i++) {
-    let input = prompt("Pick rock, paper or scissor");
-    console.log("input: " + input);
-
-    let res = letsPlay(input, computerPlay());
-    console.log("res " + res);
-    if (res === 1) person += 1;
-    if (res === 2) computer += 1;
-  }
-  console.log("computer " + computer + " person: " + person);
-  if (computer > person) {
-    return "Computer won better luck next time";
-  }
-  if (person > computer) {
-    return "You won !";
-  } else {
-    return "Nobody Won What!?";
-  }
-}
 
 //add event listeners
-
-
 leftOp.addEventListener('click',handleEvents
 ,{once:true})
 
 function handleEvents(e){
+  //user does not click on boxes
+  if(e.target.id ===""){
+    return leftOp.addEventListener("click",handleEvents,{once:true})
+  }
   console.log(e.target)
   switch (e.target.id) {
     case "rock":
@@ -130,8 +41,6 @@ function handleEvents(e){
 }
 
 function creator(e){
-  console.log(e.target.id)
-  console.log(letsPlay(e.target.id,computerPlay()))
   document.getElementById(e.target.id).remove()
   let cp = computerPlay()
   let computer = document.createElement('div')
@@ -142,6 +51,20 @@ function creator(e){
  let body = document.querySelector('body')
  let chooser;
  let button = document.createElement('button')
+  let scorePlayer = document.querySelector(".score[id=player]")
+  let scoreComputer = document.querySelector(".score[id=computer]")
+
+  let left =(document.querySelector(".score[id=player] div")===null) ? document.createElement("div")
+    : document.querySelector(".score[id=player] div") 
+  scorePlayer.appendChild(left)
+  
+  let right=(document.querySelector(".score[id=computer] div")===null) ?   document.createElement("div")
+  : document.querySelector(".score[id=computer] div")
+
+
+
+
+
   //adding properties
   newPaper.className='weapon'
   newPaper.textContent= String.fromCodePoint(EMOJIS[e.target.id])
@@ -153,6 +76,9 @@ function creator(e){
   winner.style="color:white"
   winner.className="winner"
   button.textContent="Play Again?"
+ 
+
+
   
   //showing winner
   chooser = letsPlay(e.target.id,cp)
@@ -167,15 +93,17 @@ function creator(e){
     winner.textContent="WHAT!? IT WAS TIE!!"
   }
 
-  //appending to parent Node
+ 
+  //Appending to DOM
   fight.appendChild(newPaper)
   fight.appendChild(versus)
   fight.appendChild(computer)
   body.appendChild(winner)
   winner.appendChild(button)
+  scorePlayer.appendChild(left)
+  scoreComputer.appendChild(right)
 
    button.onclick=('click', ()=>{
-    console.log("clicled")
     newPaper.remove()
     versus.remove()
     computer.remove()
@@ -190,10 +118,20 @@ function creator(e){
       document.querySelector('.leftOp').insertBefore(e.target,paper.nextSibling)
 
     }
-    //document.body.replaceWith(clone)
-    click=true
+   
+   
+   
     leftOp.addEventListener('click',handleEvents,{once:true})
   })
+
+  sendScore(chooser)
+
+  left.textContent=playerScore
+  right.textContent=computerScore
   
-  console.log("skip")
+}
+
+function sendScore(input){
+  if(input===1) playerScore+=1
+  if(input===2) computerScore+=1
 }

@@ -89,3 +89,20 @@ body{
     font-size: large;
     font-weight:bolder;
 }
+
+.score {
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    
+}
+.score div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-family: fantasy;
+}
