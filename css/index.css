@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-width:1000px;
+   background-color: #0e0d0d; 
+}
+.header{
+    text-align: center;
+    padding-top: 1rem;
+    color: white;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+
+.selection{
+    display: flex;
+    color: White;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.leftOp{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.fight{
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.fight .weapon{
+    width: 50%;
+    height: 50%; 
+    border: none;
+}
+.rightOp{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.weapon{
+    width: 50%;
+    height: 100%;   
+    font-size: 300%;
+    padding: 0.5rem;
+    border: white dotted 2px;
+    text-align: center;
+}
+
+.mistery{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 300%;
+    border: white dotted 2px;
+}
+
+.winner {
+    display:  flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: space-around;
+    font-size: x-large;
+    height: 30vh;
+    
+}
+
+.winner button {
+    padding: 1rem 2rem;
+    background-color: rgb(197, 116, 11);
+    border-radius: 1rem;
+    color: white;
+    border-color: transparent;
+    font-family: cursive;
+    font-size: large;
+    font-weight:bolder;
+}
+
+.score {
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    
+}
+.score div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-family: fantasy;
+}

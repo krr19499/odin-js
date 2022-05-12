@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript"src="../js/game.js" ></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <script data-main="../js/game" src="../js/require.js" defer></script>
 </head>
+
 <body>
-    
+    <div class="header">
+        <h1>ROCK PAPER SCISSOR</h1>
+        <h2>The Game</h2>
+    </div>
+
+    <div class="selection">
+        <div class="leftOp">
+            <h2> Choose your weapon</h2>
+            <div class="score" id="player">
+                <h2>Score: </h2>
+            </div>
+            <div class="weapon" id="rock">
+                &#129704</div>
+            <div class="weapon" id="paper">
+
+                &#9995</div>
+            <div class="weapon" id="scissor">
+                &#9986</div>
+        </div>
+        <div class="fight">
+
+
+        </div>
+        <div class="rightOp">
+            <h2>Opponent selecting</h2>
+            <div class="score" id="computer">
+                <h2>Score: </h2>
+
+            </div>
+            <div class="mistery">&#63</div>
+        </div>
+    </div>
+
+
 </body>
+
 </html>
